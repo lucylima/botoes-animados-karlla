@@ -1,7 +1,27 @@
+:root {
+  --degrade-principal: linear-gradient(
+    200deg,
+    #3383fa,
+    #3360f2,
+    #4e50f3,
+    #683bf1,
+    #8003f5
+  );
+  --degrade-secundario: linear-gradient(
+    224deg,
+    #dc29dd,
+    #c327ce,
+    #ab24bf,
+    #9320b0,
+    #7d1ca0
+  );
+}
+
 * {
   padding: 0;
   margin: 0;
 }
+
 .container {
   height: 100vh;
   display: flex;
@@ -11,17 +31,30 @@
   gap: 5rem;
 }
 
-.gradiente, .vazado, .cintilante {
-  padding: 1rem 3rem;
+.gradiente,
+.vazado,
+.cintilante {
+  padding: 1.5rem 3rem;
+  width: 16rem;
   outline: none;
   border: none;
   background: transparent;
   font-size: 1.3rem;
   cursor: pointer;
-}
-.vazado{
-  outline: 3px solid black;
   border-radius: 12px;
+  text-align: center;
+}
+
+.gradiente {
+  background: var(--degrade-principal);
+  animation: degrade 22s ease infinite;
+  background-size: 400% 400%;
+  color: white;
+  font-size: 800;
+}
+
+.vazado {
+  outline: 3px solid black;
   box-shadow: 7px 7px 0px black;
 }
 
@@ -30,4 +63,40 @@
   transition: 0.5s;
   background-color: black;
   color: white;
+}
+
+.cintilante {
+  background: var(--degrade-secundario);
+  color: rgba(255, 255, 255, 0.616);
+  text-shadow: 0px 0px 12px rgba(255, 235, 235, 0.473);
+  font-weight: bolder;
+}
+
+.cintilante:hover {
+  animation: cintilar 19s ease infinite;
+  background-size: 500% 300%;
+}
+
+@keyframes cintilar {
+  0% {
+    background-position: 10% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 90%;
+  }
+}
+
+@keyframes degrade {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 200%;
+  }
 }
